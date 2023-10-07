@@ -11,4 +11,6 @@ package gof.decorater.Example;
  */
 public interface Shape {
    void draw();
+   double getPrice();
+   double computeCost();
 }

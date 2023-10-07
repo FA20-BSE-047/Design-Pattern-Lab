@@ -15,4 +15,14 @@ public class Rectangle implements Shape {
    public void draw() {
       System.out.println("Shape: Rectangle");
    }
+
+    @Override
+    public double getPrice() {
+        return 20;
+        
+    }
+
+     public double computeCost() {
+        return getPrice(); // The cost of the shape itself
+    }
 }
