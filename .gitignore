@@ -1,11 +1,70 @@
-/LAB1/nbproject/private/
-/LAB1/build/
-/LAB2/nbproject/private/
-/LAb 2/Lab2 part 1/LAB 2 part 1/nbproject/private/
-/LAb 2/Lab2 part 1/LAB 2 part 1/build/
-/LAb 2/Lab2 part 2/LAB 2 part 2/nbproject/private/
-/LAb 2/LAB 2 part 1/build/
-/LAb 2/LAB 2 part 1/nbproject/private/
-/LAb 2/LAB 2 part 2/nbproject/private/
-/LAb 2/LAB2 part 2/nbproject/private/
-/LAb 2/LAB2 part 2/build/
+# NetBeans project files
+/nbproject/*
+
+# Compiled class files
+/target/
+/build/
+/classes/
+/test/
+
+# Dependency directories
+/lib/
+/libs/
+/deps/
+/jar/
+/war/
+
+# Logs and temporary files
+/log/
+/logs/
+/temp/
+*.log
+*.log.*
+*.bak
+*.swp
+
+# IDE-specific files
+/.idea/
+/.classpath
+/.project
+/.settings/
+/.metadata/
+/.cache/
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# Maven-specific files
+/.mvn/
+/target/
+
+# Gradle-specific files
+/.gradle/
+.gradle/
+build/
+
+# Eclipse-specific files
+/.settings/
+.classpath
+.project
+.settings/
+*.launch
+
+# User-specific files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# NetBeans-specific files
+*.nbattrs
+*.class
+DP/build.xml
+DP/manifest.mf
+*.xml
+*.properties
