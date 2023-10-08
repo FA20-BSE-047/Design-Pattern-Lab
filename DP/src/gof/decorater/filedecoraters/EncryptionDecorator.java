@@ -10,7 +10,14 @@ import java.util.Base64;
  *
  * @author elitebook g3
  */
+
+import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
+
 public class EncryptionDecorator extends DataSourceDecorator {
+    private static final String ENCRYPTION_ALGORITHM = "AES";
+    private static final String SECRET_KEY = "YourSecretKey123";
 
     public EncryptionDecorator(DataSource source) {
         super(source);
@@ -18,27 +25,45 @@ public class EncryptionDecorator extends DataSourceDecorator {
 
     @Override
     public void writeData(String data) {
-        super.writeData(encode(data));
+        String encryptedData = encrypt(data);
+        super.writeData(encryptedData);
     }
 
     @Override
     public String readData() {
-        return decode(super.readData());
+        String encryptedData = super.readData();
+        return decrypt(encryptedData);
     }
 
-    private String encode(String data) {
-        byte[] result = data.getBytes();
-        for (int i = 0; i < result.length; i++) {
-            result[i] += (byte) 1;
-        }
-        return Base64.getEncoder().encodeToString(result);
+    @Override
+    public String readOriginalData() {
+        return super.readOriginalData();
     }
 
-    private String decode(String data) {
-        byte[] result = Base64.getDecoder().decode(data);
-        for (int i = 0; i < result.length; i++) {
-            result[i] -= (byte) 1;
+    private String encrypt(String data) {
+        try {
+            Cipher cipher = Cipher.getInstance(ENCRYPTION_ALGORITHM);
+            SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), ENCRYPTION_ALGORITHM);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] encryptedBytes = cipher.doFinal(data.getBytes());
+            return Base64.getEncoder().encodeToString(encryptedBytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
         }
-        return new String(result);
+    }
+
+    private String decrypt(String data) {
+        try {
+            Cipher cipher = Cipher.getInstance(ENCRYPTION_ALGORITHM);
+            SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(), ENCRYPTION_ALGORITHM);
+            cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            byte[] decodedBytes = Base64.getDecoder().decode(data);
+            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+            return new String(decryptedBytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
     }
 }

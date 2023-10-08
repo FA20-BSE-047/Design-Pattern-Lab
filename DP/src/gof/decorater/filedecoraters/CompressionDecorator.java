@@ -10,68 +10,69 @@ package gof.decorater.filedecoraters;
  */
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
 import java.util.zip.Deflater;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.util.zip.Inflater;
 
 public class CompressionDecorator extends DataSourceDecorator {
-    private int compLevel = 6;
 
     public CompressionDecorator(DataSource source) {
         super(source);
     }
 
-    public int getCompressionLevel() {
-        return compLevel;
-    }
-
-    public void setCompressionLevel(int value) {
-        compLevel = value;
-    }
-
     @Override
-    public void writeData(String data) {
-        super.writeData(compress(data));
+    public void writeData(String data){
+        // Compress the data before writing it to the underlying DataSource.
+        String compressedData = compress(data);
+        super.writeData(compressedData);
     }
 
     @Override
     public String readData() {
-        return decompress(super.readData());
+        // Decompress the data after reading it from the underlying DataSource.
+        String compressedData = super.readData();
+        return decompress(compressedData);
     }
 
-    private String compress(String stringData) {
-        byte[] data = stringData.getBytes();
-        try {
-            ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-            DeflaterOutputStream dos = new DeflaterOutputStream(bout, new Deflater(compLevel));
-            dos.write(data);
-            dos.close();
-            bout.close();
-            return Base64.getEncoder().encodeToString(bout.toByteArray());
-        } catch (IOException ex) {
-            return null;
+    @Override
+    public String readOriginalData() {
+        return super.readOriginalData();
+    }
+
+    private String compress(String data){
+        try{
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            Deflater deflater = new Deflater();
+            deflater.setInput(data.getBytes());
+            deflater.finish();
+            byte[] buffer = new byte[1024];
+            while (!deflater.finished()) {
+                int count = deflater.deflate(buffer);
+                outputStream.write(buffer, 0, count);
+            }
+            outputStream.close();
+            return outputStream.toString();
+        }catch (Exception e){
+            e.printStackTrace();
+            return data;
         }
     }
 
-    private String decompress(String stringData) {
-        byte[] data = Base64.getDecoder().decode(stringData);
-        try {
-            InputStream in = new ByteArrayInputStream(data);
-            InflaterInputStream iin = new InflaterInputStream(in);
-            ByteArrayOutputStream bout = new ByteArrayOutputStream(512);
-            int b;
-            while ((b = iin.read()) != -1) {
-                bout.write(b);
-            }
-            in.close();
-            iin.close();
-            bout.close();
-            return new String(bout.toByteArray());
-        } catch (IOException ex) {
-            return null;
+    private String decompress(String data){
+        try{
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(data.getBytes());
+        Inflater inflater = new Inflater();
+        inflater.setInput(inputStream.readAllBytes());
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        while (!inflater.finished()) {
+            int count = inflater.inflate(buffer);
+            outputStream.write(buffer, 0, count);
+        }
+        outputStream.close();
+        return outputStream.toString();
+        }catch (Exception e){
+            e.printStackTrace();
+            return data;
         }
     }
 }

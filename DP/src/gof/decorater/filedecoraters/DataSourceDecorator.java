@@ -1,27 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gof.decorater.filedecoraters;
 
 /**
  *
  * @author elitebook g3
  */
-public class DataSourceDecorator implements DataSource {
-    private DataSource wrappee;
+public abstract class DataSourceDecorator implements DataSource {
+    protected DataSource wrapper;
 
-    DataSourceDecorator(DataSource source) {
-        this.wrappee = source;
+    public DataSourceDecorator(DataSource source) {
+        this.wrapper = source;
     }
 
-    @Override
     public void writeData(String data) {
-        wrappee.writeData(data);
+        wrapper.writeData(data);
     }
 
-    @Override
     public String readData() {
-        return wrappee.readData();
+        return wrapper.readData();
+    }
+
+    public String readOriginalData() {
+        return wrapper.readOriginalData();
     }
 }
