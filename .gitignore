@@ -61,10 +61,3 @@ build/
 *.iws
 .idea/
 
-# NetBeans-specific files
-*.nbattrs
-*.class
-DP/build.xml
-DP/manifest.mf
-*.xml
-*.properties
