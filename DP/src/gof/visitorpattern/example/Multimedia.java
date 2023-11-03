@@ -9,6 +9,6 @@ package gof.visitorpattern.example;
  *
  * @author fa20-bse-047
  */
-public class NewClass {
+public class Multimedia {
     
 }
