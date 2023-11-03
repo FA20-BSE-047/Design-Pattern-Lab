@@ -65,25 +65,25 @@ public class Demo {
 
             messageType = MessageType.INFO;
 
-        }
+        }}}
 
         // Create proper network object and send the message.
 
-        if (choice == 1) {
-            network = new Facebook(userName, password);
-
-            message1 = new Message(message, messageType, NetworkType.FACEBOOK);
-
-        } else if (choice == 2) {
-            network = new Twitter(userName, password);
-
-            message1 = new Message(message, messageType, NetworkType.TWITTER);
-        } else if (choice == 3) {
-            network = new Linkedln(userName, password);
-
-            message1 = new Message(message, messageType, NetworkType.LINKEDIN);
-        }
-
-        network.post(message1);
-    }
-}
+//        if (choice == 1) {
+//            network = new Facebook(userName, password);
+//
+//            message1 = new Message(message, messageType, NetworkType.FACEBOOK);
+//
+//        } else if (choice == 2) {
+//            network = new Twitter(userName, password);
+//
+//            message1 = new Message(message, messageType, NetworkType.TWITTER);
+//        } else if (choice == 3) {
+//            network = new Linkedln(userName, password);
+//
+//            message1 = new Message(message, messageType, NetworkType.LINKEDIN);
+//        }
+//
+//        network.post(message1);
+//    }
+//}

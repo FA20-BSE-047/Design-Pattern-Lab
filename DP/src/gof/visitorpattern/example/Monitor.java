@@ -9,6 +9,16 @@ package gof.visitorpattern.example;
  *
  * @author fa20-bse-047
  */
-public class Monitor {
-    
+public class Monitor implements ComputerPart {
+
+    @Override
+    public void accept(ComputerPartVisitor computerPartVisitor) {
+        computerPartVisitor.visit(this);
+
+    }
+
+    @Override
+    public void accept(ComputerPartMaintainer computerPartMaintainer) {
+        computerPartMaintainer.maintain(this);
+    }
 }

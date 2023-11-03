@@ -9,6 +9,15 @@ package gof.visitorpattern.example;
  *
  * @author fa20-bse-047
  */
-public class Keyboard {
-    
+public class Keyboard implements ComputerPart {
+
+    @Override
+    public void accept(ComputerPartVisitor computerPartVisitor) {
+        computerPartVisitor.visit(this);
+    }
+
+    @Override
+    public void accept(ComputerPartMaintainer computerPartMaintainer) {
+        computerPartMaintainer.maintain(this);
+    }
 }

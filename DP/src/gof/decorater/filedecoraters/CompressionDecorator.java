@@ -61,7 +61,7 @@ public class CompressionDecorator extends DataSourceDecorator {
         try{
         ByteArrayInputStream inputStream = new ByteArrayInputStream(data.getBytes());
         Inflater inflater = new Inflater();
-        inflater.setInput(inputStream.readAllBytes());
+//        inflater.setInput(inputStream.readAllBytes());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         while (!inflater.finished()) {

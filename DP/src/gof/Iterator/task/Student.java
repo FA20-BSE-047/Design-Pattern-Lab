@@ -43,7 +43,7 @@ public class Student {
     public static Student[] getStudents() {
         Student[] students = new Student[16];
         for (int i = 0; i < students.length; i++) {
-            students[i] = new Student(randName(),randGender(),randRegNo(),randPhoneNo());
+//            students[i] = new Student(randName(),randGender(),randRegNo(),randPhoneNo());
         }
         return students;
     }
@@ -55,12 +55,12 @@ public class Student {
         return genders[rand.nextInt(genders.length)];
     }
 
-    private static String randRegNo(){
-        return semesterNames[rand.nextInt(semesterNames.length)]+"-"+programNames[rand.nextInt(programNames.length)]+"-"+rand.nextInt(10,200);
-    }
-
-    private static String randPhoneNo(){
-        String firstDigit=String.valueOf(rand.nextInt(1,5));
-        return "+923"+firstDigit+rand.nextInt(10000000,99999999);
-    }
+//    private static String randRegNo(){
+//        return semesterNames[rand.nextInt(semesterNames.length)]+"-"+programNames[rand.nextInt(programNames.length)]+"-"+rand.nextInt(10,200);
+//    }
+//
+//    private static String randPhoneNo(){
+//        String firstDigit=String.valueOf(rand.nextInt(1,5));
+//        return "+923"+firstDigit+rand.nextInt(10000000,99999999);
+//    }
 }
