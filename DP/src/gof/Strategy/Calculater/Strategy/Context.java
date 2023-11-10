@@ -15,7 +15,7 @@ public class Context {
 
     public Context(Strategy strategy) {
         this.strategy = strategy;
-        this.strategyChain = new OperationAdd(new OperationSubtract(new OperationMultiply(new OperationDivide(new OperationPower()))));
+        this.strategyChain = (Strategy) new OperationAdd(new OperationSubtract(new OperationMultiply(new OperationDivide(new OperationPower()))));
     }
 
     public int executeStrategy(int num1, int num2) {

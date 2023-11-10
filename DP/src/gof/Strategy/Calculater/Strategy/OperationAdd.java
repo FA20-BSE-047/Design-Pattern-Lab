@@ -14,5 +14,9 @@ public class OperationAdd {
     OperationAdd(OperationSubtract operationSubtract) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    OperationAdd(OperationSubtract operationSubtract) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
