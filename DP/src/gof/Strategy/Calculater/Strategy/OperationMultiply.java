@@ -9,46 +9,39 @@ package gof.Strategy.Calculater.Strategy;
  *
  * @author fa20-bse-047
  */
-public class OperationMultiply {
+public class OperationMultiply implements Strategy, ComputationChainHandler {
+    private ComputationChainHandler next;
 
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public OperationMultiply() {
+        this.setNext(null);
     }
 
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public OperationMultiply(ComputationChainHandler next) {
+        this.setNext(next);
     }
 
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public int doOperation(int num1, int num2) {
+        System.out.print("Multiplication: " + num1 + " * " + num2 + " = ");
+        return num1 * num2;
     }
 
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void setNext(ComputationChainHandler handler) {
+        this.next = handler;
     }
 
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public int computeInRange(int num1, int num2) {
+        boolean num1InRange = num1 >= 1000 && num1 <= 5000,
+                num2InRange = num2 >= 1000 && num2 <= 5000;
+        if (num1InRange && num2InRange) {
+            return doOperation(num1, num2);
+        } else if (next != null) {
+            return next.computeInRange(num1, num2);
+        } else {
+            System.out.println("No handler For this range: " + num1 + "," + num2);
+            return Integer.MIN_VALUE;
+        }
     }
-
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    OperationMultiply(OperationDivide operationDivide) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

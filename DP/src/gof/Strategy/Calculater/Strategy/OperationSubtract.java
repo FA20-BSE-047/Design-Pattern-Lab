@@ -9,7 +9,7 @@ package gof.Strategy.Calculater.Strategy;
  *
  * @author fa20-bse-047
  */
-public class OperationSubtract extends ComputationChainHandler {
+public class OperationSubtract implements Strategy, ComputationChainHandler {
     private ComputationChainHandler next;
 
     public OperationSubtract() {
@@ -20,15 +20,18 @@ public class OperationSubtract extends ComputationChainHandler {
         this.setNext(next);
     }
 
+    @Override
     public int doOperation(int num1, int num2) {
         System.out.print("Subtraction: " + num1 + " - " + num2 + " = ");
         return num1 - num2;
     }
 
+    @Override
     public void setNext(ComputationChainHandler handler) {
         this.next = handler;
     }
 
+    @Override
     public int computeInRange(int num1, int num2) {
         boolean num1InRange = num1 >= 100 && num1 <= 1000,
                 num2InRange = num2 >= 100 && num2 <= 1000;

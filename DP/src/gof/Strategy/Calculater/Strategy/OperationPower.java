@@ -9,17 +9,20 @@ package gof.Strategy.Calculater.Strategy;
  *
  * @author fa20-bse-047
  */
-public class OperationPower extends ComputationChainHandler {
+import java.math.BigInteger;
+
+public class OperationPower implements Strategy, ComputationChainHandler {
     private ComputationChainHandler next;
 
     public OperationPower() {
         this.setNext(null);
     }
 
+    @Override
     public int doOperation(int num1, int num2) {
         BigInteger result = (new BigInteger(String.valueOf(num1))).pow(num2);
-        if (result.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) >= 0 &&
-                result.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) <= 0) {
+        if (result.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) <= 0 &&
+                result.compareTo(BigInteger.valueOf(Integer.MIN_VALUE)) >= 0) {
             System.out.print("Power: " + num1 + " ^ " + num2 + " = ");
             return Integer.parseInt(result.toString());
         }else {
@@ -29,6 +32,7 @@ public class OperationPower extends ComputationChainHandler {
         }
     }
 
+    @Override
     public void setNext(ComputationChainHandler handler) {
         this.next = handler;
     }

@@ -9,14 +9,8 @@ package gof.Strategy.Calculater.Strategy;
  *
  * @author fa20-bse-047
  */
-public class Strategy {
+public interface Strategy {
+    int doOperation(int num1, int num2);
 
-    int doOperation(int num1, int num2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    int computeInRange(int num1, int num2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    int computeInRange(int num1, int num2);
 }
