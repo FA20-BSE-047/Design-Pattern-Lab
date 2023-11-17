@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.Strategy.Calculater.Strategy;
+package gof.ProxyPattern.LabTask;
 
 /**
  *
  * @author fa20-bse-047
  */
-public interface Strategy {
-    int doOperation(int num1, int num2);
-
-    int computeInRange(int num1, int num2);
+public interface Exam {
+  void addAnswer(String answer);
+  void viewResults();
 }
+
+
+
+
+
