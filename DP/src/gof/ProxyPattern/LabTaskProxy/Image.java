@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.ProxyPattern.LabTask;
+package gof.ProxyPattern.LabTaskProxy;
 
 /**
  *
  * @author fa20-bse-047
  */
-public interface Exam {
-  void addAnswer(String answer);
-  void viewResults();
+
+public interface Image {
+    void display(String imageType);
 }
-
-
-
-
-

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.ProxyPattern.LabTask;
+package gof.ProxyPattern.LabTask2;
 
-import gof.ProxyPattern.Example2SirReprosity.Image;
+import gof.ProxyPattern.LabTaskProxy.Image;
 
 /**
  *

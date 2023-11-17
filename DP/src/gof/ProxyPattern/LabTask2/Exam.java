@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.ProxyPattern.LabTask;
+package gof.ProxyPattern.LabTask2;
 
 /**
  *
  * @author fa20-bse-047
  */
-public class LazyLoadingProxyImage {
-    
+public interface Exam {
+  void addAnswer(String answer);
+  void viewResults();
 }
+
+
+
+
+
