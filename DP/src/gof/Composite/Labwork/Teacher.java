@@ -9,21 +9,47 @@ package gof.Composite.Labwork;
  *
  * @author fa20-bse-047
  */
+import java.util.List;
+
+
 public class Teacher extends BaseEmployee {
-  private String qualification;
+    String status, qualification;
 
-  public Teacher(String name, int salary, String qualification) {
-    super(name, salary);
-    this.qualification = qualification;
-  }
+    public Teacher(String name, int salary, String status, String qualification) {
+        super(name, salary);
+        this.status = status;
+        this.qualification = qualification;
+    }
 
-    
-  public String getQualification() {
-    return qualification;
-  }
+
 
     @Override
-    public void setSalary(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void giveBonus(int percent) {
+        System.out.println("Teacher " + name + " got " + (percent*salary/100) + " bonus");
+    }
+
+    @Override
+    public void addSubordinate(IEmployee subordinate) {
+        System.err.println("Teacher cannot have subordinates");
+    }
+
+    @Override
+    public List<IEmployee> getSubordinatesList() {
+        return null;
+    }
+
+    @Override
+    public void update(String change){
+        System.out.println("Teacher "+name+" got notification from University of change:"+change);
+    }
+    @Override
+    public String toString() {
+        return "\n" +
+                "\nTeacher{" +
+                "\nName='" + name + '\'' +
+                ",\nSalary=" + salary +
+                ",\nStatus='" + status + '\'' +
+                ",\nQualification='" + qualification + '\'' +
+                "\n}";
     }
 }

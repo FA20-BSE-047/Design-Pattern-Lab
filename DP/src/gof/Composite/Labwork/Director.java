@@ -6,24 +6,42 @@
 package gof.Composite.Labwork;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Director extends BaseEmployee {
-  private List<IEmployee> subordinate;
+public class Director extends BaseEmployee{
+    List<IEmployee> subordinatesList;
 
-  public Director(String name, int salary, List<IEmployee> subordinate) {
-    super(name, salary);
-    this.subordinate = subordinate;
-  }
-
-  public List<IEmployee> getSubordinate() {
-    return subordinate;
-  }
-
-    @Override
-    public void setSalary(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Director(String name, int salary) {
+        super(name, salary);
+        subordinatesList=new LinkedList<>();
     }
 
-   
+    @Override
+    public void giveBonus(int percent) {
+        System.out.println("Director "+name+" got "+(percent*salary/100)+" bonus");
+    }
+
+    public void addSubordinate(IEmployee subordinate){
+        subordinatesList.add(subordinate);
+    }
+
+    @Override
+    public List<IEmployee> getSubordinatesList() {
+        return subordinatesList;
+    }
+
+    @Override
+    public void update(String change){
+        System.out.println("Director "+name+" got notification from University of change:"+change);
+    }
+
+    @Override
+    public String toString() {
+        return "\nDirector{" +
+                "\nName='" + name + '\'' +
+                ",\nSalary=" + salary +
+                ",\nSubordinatesList=" + subordinatesList +
+                "\n}";
+    }
 }

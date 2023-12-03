@@ -13,32 +13,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Demo {
-  public static void main(String[] args) {
-    List<IEmployee> subordinate = new ArrayList<>();
-    subordinate.add(new Teacher("Alice", 10000, "Bachelors"));
-    subordinate.add(new Teacher("Bob", 12000, "Masters"));
+    public static void main(String[] args) {
+        EmployeeController employeesController = EmployeeController.getInstance();
 
-    HOD hod = new HOD("Carol", 15000, subordinate);
+        employeesController.generateOrganogram();
 
-    List<IEmployee> subordinate1 = new ArrayList<>();
-    subordinate1.add(hod);
+        // Give bonus to all employees 20% of their salary
+        System.out.println("\n"+"-".repeat(30) + "\nGiving bonus to all employees\n");
+        employeesController.activateBonus(20);
 
-    DOO doo = new DOO("Dave", 20000, "Senior Director");
+        // Give bonus to all employees who are teachers, 10% of their salary
+  
+        System.out.println("\n"+"-".repeat(30) + "\nGiving bonus to all teachers\n");
+        employeesController.activateBonus(10, "teacher");
 
-    List<IEmployee> subordinate2 = new ArrayList<>();
-    subordinate2.add(doo);
+        // Give bonus to all employees who are teachers or hod, 10% of their salary
+        System.out.println("\n"+"-".repeat(30) + "\nGiving bonus to all teachers and hod\n");
+        employeesController.activateBonus(10, "doo", "hod");
 
-    Director director = new Director("Eve", 25000, subordinate2);
+        // Subscribe all employees to university for updates
+        employeesController.subscribeToUniversity();
 
-    EmployeeController employeeController = new EmployeeController(director);
+        // Send update to all employees
+        System.out.println("\n"+"-".repeat(30) + "\nSending update to all employees\n");
+        employeesController.updateUniversity("University is closed today");
 
-    // Generate the orgongram
-    employeeController.generateOrgongram();
+        // Send update to all employees who are teachers
+        System.out.println("\n"+"-".repeat(30) + "\nSending update to all teachers\n");
+        employeesController.updateUniversity("Please Come for Meeting", "teacher");
 
-    // Give a 10% bonus to all employees
-    employeeController.giveBonus(10);
-
-    // Activate the performance bonus for the director
-    employeeController.activateBonus("Performance", 20);
-  }
+        // Send update to all employees who are teachers or hod
+        System.out.println("\n"+"-".repeat(30) + "\nSending update to all teachers and hod\n");
+        employeesController.updateUniversity("No Classes Today", "teacher", "hod");
+    }
 }
