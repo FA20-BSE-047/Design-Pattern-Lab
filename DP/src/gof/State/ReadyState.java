@@ -8,37 +8,39 @@ package gof.State;
  *
  * @author elitebook g3
  */
-public class LockedState extends State {
+public class ReadyState extends State {
 
-    LockedState(Player player) {
+    public ReadyState(Player player) {
         super(player);
-        UI.changeLabelState("Locked");
+        UI.changeLabelState("Ready");
     }
+
+   
 
     @Override
     public String onLock() {
-        player.changeState(new PlayingState(player));
-        player.setLocked(false);
+        player.changeState(new LockedState(player));
+        player.setLocked(true);
         player.setPlaying(false);
-        player.getIterator().reset();
-        return "Ready";
+        return "Locked...";
     }
 
     @Override
     public String onPlay() {
+        String action = player.getIterator().next();
         player.changeState(new PlayingState(player));
-        player.setPlaying(false);
+        player.setPlaying(true);
         player.setLocked(false);
-        return "Ready";
+        return action;
     }
 
     @Override
     public String onNext() {
-        return "Locked...";
+        return "Press Play...";
     }
 
     @Override
     public String onPrevious() {
-        return "Locked...";
+        return "Press Play...";
     }
 }
