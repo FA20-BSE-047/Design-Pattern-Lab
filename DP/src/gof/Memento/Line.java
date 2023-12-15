@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.Memento.RefactoringGuru;
+package gof.Memento;
 
 /**
  *
@@ -12,26 +12,30 @@ package gof.Memento.RefactoringGuru;
 
 import java.awt.*;
 
-public class Dot extends BaseShape {
-    private final int DOT_SIZE = 3;
+public class Line extends BaseShape {
+    private final int x1, y1, x2, y2;
 
-    public Dot(int x, int y, Color color) {
-        super(x, y, color);
+    public Line(int x1, int y1, int x2, int y2, Color color) {
+        super(x1, y1, color);
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
     }
 
     @Override
     public int getWidth() {
-        return DOT_SIZE;
+        return 1;
     }
 
     @Override
     public int getHeight() {
-        return DOT_SIZE;
+        return (int) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
     @Override
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        graphics.fillRect(x - 1, y - 1, getWidth(), getHeight());
+        graphics.drawLine(x1, y1, x2, y2);
     }
 }

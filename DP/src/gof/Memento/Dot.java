@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.Memento.RefactoringGuru;
+package gof.Memento;
 
 /**
  *
@@ -12,27 +12,26 @@ package gof.Memento.RefactoringGuru;
 
 import java.awt.*;
 
-public class Circle extends BaseShape {
-    private int radius;
+public class Dot extends BaseShape {
+    private final int DOT_SIZE = 3;
 
-    public Circle(int x, int y, int radius, Color color) {
+    public Dot(int x, int y, Color color) {
         super(x, y, color);
-        this.radius = radius;
     }
 
     @Override
     public int getWidth() {
-        return radius * 2;
+        return DOT_SIZE;
     }
 
     @Override
     public int getHeight() {
-        return radius * 2;
+        return DOT_SIZE;
     }
 
     @Override
     public void paint(Graphics graphics) {
         super.paint(graphics);
-        graphics.drawOval(x, y, getWidth() - 1, getHeight() - 1);
+        graphics.fillRect(x - 1, y - 1, getWidth(), getHeight());
     }
 }

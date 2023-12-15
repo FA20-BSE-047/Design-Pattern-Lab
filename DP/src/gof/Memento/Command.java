@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.Memento.RefactoringGuru;
+package gof.Memento;
 
 /**
  *
  * @author fa20-bse-047
  */
-public class Line {
-    
+
+public interface Command {
+    String getName();
+    void execute();
 }

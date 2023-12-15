@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gof.Memento.RefactoringGuru;
+package gof.Memento;
 
 /**
  *
  * @author fa20-bse-047
  */
-import gof.Memento.RefactoringGuru.Editor;
-import gof.Memento.RefactoringGuru.Circle;
-import gof.Memento.RefactoringGuru.CompoundShape;
-import gof.Memento.RefactoringGuru.Dot;
-import gof.Memento.RefactoringGuru.Rectangle;
+import gof.Memento.Editor;
+import gof.Memento.Circle;
+import gof.Memento.CompoundShape;
+import gof.Memento.Dot;
+import gof.Memento.Rectangle;
 
 import java.awt.*;
 
