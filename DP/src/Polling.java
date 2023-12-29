@@ -1,32 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package gof.FA23finalExam;
-
-/**
- *
- * @author elitebook g3
- */
+import gof.FA23finalExam.CommunicatingObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Survey implements CommunicatingObject {
-    private List<String> questions;
+public class Polling implements CommunicatingObject {
+    private List<String> options;
 
-    public Survey(List<String> questions) {
-        this.questions = new ArrayList<>(questions);
+    public Polling(List<String> options) {
+        this.options = new ArrayList<>(options);
     }
 
-    @Override
+  
     public String getContent() {
-        StringBuilder surveyContent = new StringBuilder();
-        surveyContent.append("Survey Questions:\n");
-        for (int i = 0; i < questions.size(); i++) {
-            surveyContent.append(i + 1).append(". ").append(questions.get(i)).append("\n");
+        StringBuilder pollingContent = new StringBuilder();
+        pollingContent.append("Polling Options:\n");
+        for (int i = 0; i < options.size(); i++) {
+            pollingContent.append(i + 1).append(". ").append(options.get(i)).append("\n");
         }
-        return surveyContent.toString();
+        return pollingContent.toString();
     }
-    
-    // Additional methods to handle survey-specific functionalities if needed
+
+    // Additional methods to handle polling-specific functionalities if needed
 }

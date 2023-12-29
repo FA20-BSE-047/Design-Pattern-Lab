@@ -8,15 +8,9 @@ package gof.FA23finalExam;
  *
  * @author elitebook g3
  */
-public class Announcement implements CommunicatingObject {
-    private String content;
-
-    public Announcement(String content) {
-        this.content = content;
+public class MessageBuilder {
+    public Message createMessage(Stakeholder sender, Stakeholder receiver, String content) {
+        return new Message(sender, receiver, content);
     }
-
-    @Override
-    public String getContent() {
-        return content;
-    }
+    // Other methods or logic related to building messages
 }

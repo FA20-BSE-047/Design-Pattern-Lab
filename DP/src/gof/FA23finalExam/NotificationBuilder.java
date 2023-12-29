@@ -8,15 +8,10 @@ package gof.FA23finalExam;
  *
  * @author elitebook g3
  */
-public class Announcement implements CommunicatingObject {
-    private String content;
+class NotificationBuilder {
 
-    public Announcement(String content) {
-        this.content = content;
+    Notification createNotification(String notification_content, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public String getContent() {
-        return content;
-    }
+    
 }
